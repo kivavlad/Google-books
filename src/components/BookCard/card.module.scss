@@ -1,0 +1,46 @@
+.card_container {
+    height: 500px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.image_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+}
+
+.text_container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+
+    h2 {
+        font-size: 22px;
+        line-height: 24px;
+        font-weight: 700;
+        color: var(--gray-600);
+        margin: 10px 0;
+        overflow: hidden;
+        height: 50px;
+    }
+
+    p {
+        font-size: 14px;
+        color: var(--gray-300);
+    }
+
+    span {
+        font-size: 14px;
+        color: var(--gray-600);
+    }
+
+}
+
+.text_container_header {
+    height: 40px;
+    overflow: hidden;
+}
