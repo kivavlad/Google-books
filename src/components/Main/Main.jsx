@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import style from "./main.module.scss";
-
 import Form from "../Form/Form";
 import ResultBooksCards from "../ResultBookCards/ResultBooksCards";
 import { Loader } from "../Loader/Loader";
@@ -9,18 +8,23 @@ import heroImage from "../../assets/images/hero-image.jpg";
 import bgImage from "../../assets/images/bg-image.png";
 
 
-
-const Main = () => {
-    const [loading, setLoading] = useState(false);
+const Main = (props) => {
+    const {books, setBooks} = props;
     const [totalResults, setTotalResults] = useState(null);
-    const [books, setBooks] = useState([]);
-    const [results, setResults] = useState(false);
+    const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        if(localStorage.getItem("totalCount") !== null) {
+            setTotalResults(localStorage.getItem("totalCount"));
+        }
+    }, [setTotalResults])
+    
     function reset() {
         setTotalResults([]);
         setBooks([]);
-        setResults(false);
+        localStorage.clear();
     }
+
 
     return (
         <>
@@ -45,10 +49,10 @@ const Main = () => {
             <section className={style.form_section}>
                 <div className="container">
                     <Form 
-                        setBooks={setBooks}
                         setTotalResults={setTotalResults}
+                        setBooks={setBooks}
+                        books={books}
                         setLoading={setLoading}
-                        setResults={setResults}
                     />
                 </div>
             </section>
@@ -57,24 +61,28 @@ const Main = () => {
                 <div className="container">
                     <div className={style.result_section_container}>
 
-                        {results ?
+                        {books.length >= 1 ?
                             <>
                                 {!loading ?
                                     <div>
                                         <div className={style.search_result_params}>
                                             <div>
-                                                <h2 className={style.result_section_title}>Search results on demand</h2>
+                                                <h2 className={style.result_section_title}>Search results</h2>
                                                 <h4 className={style.result_section_subtitle}>
                                                     <span>{totalResults ? totalResults : 0}</span> books found for your request
                                                 </h4>
                                             </div>
-                                            <button onClick={() => reset()} className={style.reset_button}>Reset</button>
+                                                <button onClick={() => reset()} className={style.reset_button}>Reset</button>
                                         </div>
+
                                         <div className={style.search_result_books}>
-                                            {books &&
-                                                <ResultBooksCards books={books} />
-                                            }
+                                            <ResultBooksCards books={books} />
                                         </div>
+
+                                        <div className={style.search_result_button_container}>
+                                            <button type='submit'>Load more</button>
+                                        </div>
+
                                     </div>
                                 :
                                     <div className={style.loader}>

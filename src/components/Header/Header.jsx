@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./header.module.scss";
+import { Link } from "react-router-dom";
 
 
 const Header = () => {
@@ -15,14 +16,14 @@ const Header = () => {
 
                     <div className={style.header_nav}>
                         <div className={style.header_links}>
-                            <a href="#!" className={style.header_link}>Features</a>
-                            <a href="#!" className={style.header_link}>Pricing</a>
-                            <a href="#!" className={style.header_link}>Resources</a>
+                            <Link to="/" className={style.header_link}>Home</Link>
+                            <Link to="/" className={style.header_link}>Pricing</Link>
+                            <Link to="/" className={style.header_link}>Resources</Link>
                         </div>
                     </div>
 
                     <div className={style.header_buttons}>
-                        <a href="#!" className={style.header_link}>Login</a>
+                        <Link to="/" className={style.header_link}>Login</Link>
                         <button className={style.button}>Sign Up</button>
                     </div>
 

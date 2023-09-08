@@ -1,32 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 import style from "./card.module.scss";
 import bookImage from "../../assets/images/book.jpg";
+import { useNavigate } from "react-router-dom";
 
 
 const BookCard = (props) => {
     const {book} = props;
-    const [bookAuthors] = useState(book.volumeInfo && book.volumeInfo.authors);
-    const imageUrl = book.volumeInfo.imageLinks;
-    const bookTitle = book.volumeInfo.title;
-    const bookDescription = book.volumeInfo.description;
-    const bookCategories = book.volumeInfo;
-    
+    const navigate = useNavigate();
+
+    const authors = book.volumeInfo.authors?.join(', ');
+    const imageUrl = book.volumeInfo.imageLinks?.thumbnail;
+    const bookTitle = book.volumeInfo.title?.substr(0, 36);
+    const categories = book.volumeInfo?.categories;
+
+    function getOpenBook(book) {
+        navigate(`/${book.id}`);
+    }
 
     return (
-        <div key={book.id} className={style.card_container}>
+        <div key={book.id} onClick={() => getOpenBook(book)}  className={style.card_container}>
 
             <div className={style.image_container}>
-                <img src={imageUrl ? imageUrl.thumbnail : bookImage} alt="" />
+                <img src={imageUrl ? imageUrl : bookImage} alt="" />
             </div>
 
             <div className={style.text_container}>
-                <div className={style.text_container_header}>
-                    <p>Categoties: <span>{bookCategories && bookCategories.categories}</span></p>
-                    <p>Author: <span>{bookAuthors}</span></p>
-                </div>
-
-                <h2>{bookTitle ? bookTitle.substr(0, 36) : 'Title'}</h2>
-                <p>{bookDescription ? bookDescription.substr(0, 100) : 'not description'} ...</p>
+                <p>Categoties: <span>{categories}</span></p>
+                <h2>{bookTitle}</h2>
+                <p>{authors}</p>
             </div>
 
         </div>

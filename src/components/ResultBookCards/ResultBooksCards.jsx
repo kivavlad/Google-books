@@ -7,14 +7,18 @@ const ResultBooksCards = (props) => {
 
     return (
         <>
-            {books.map((book) => {
-                return (
-                    <BookCard
-                        key={book.id}
-                        book={book}
-                    />
-                )
-            })}
+            {books && 
+                <>
+                    {books.map((book) => {
+                        return (
+                            <BookCard
+                                key={book.id}
+                                book={book}
+                            />
+                        )
+                    })}
+                </>
+            }
         </>
     )
 }
