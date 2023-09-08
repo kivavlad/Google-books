@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/Google-books/static/css/main.2d84cf97.css",
-    "main.js": "/Google-books/static/js/main.da9b1d9d.js",
+    "main.css": "/Google-books/static/css/main.f2b65979.css",
+    "main.js": "/Google-books/static/js/main.7356e156.js",
     "static/media/book.jpg": "/Google-books/static/media/book.89402c324a9f5e90693a.jpg",
     "static/media/bg-image.png": "/Google-books/static/media/bg-image.d5a121d097cf4c5a46c4.png",
     "static/media/hero-image.jpg": "/Google-books/static/media/hero-image.82ddce1f4686bdbddaaf.jpg",
+    "static/media/close_icon.svg": "/Google-books/static/media/close_icon.2c826b9957cfc084b0b15fc32e0e1fdb.svg",
     "static/media/icon-instagram.svg": "/Google-books/static/media/icon-instagram.df5873287e1c06a0fe74440f6ccd8394.svg",
     "static/media/icon-pinterest.svg": "/Google-books/static/media/icon-pinterest.a2d25ab4c70b78c4028f25323009cc58.svg",
     "index.html": "/Google-books/index.html",
     "static/media/icon-twitter.svg": "/Google-books/static/media/icon-twitter.1d5c6d5e6ab1717a500af2df0a87959a.svg",
     "static/media/icon-facebook.svg": "/Google-books/static/media/icon-facebook.229c75a01827343aef31ae916e2ec18a.svg",
-    "main.2d84cf97.css.map": "/Google-books/static/css/main.2d84cf97.css.map",
-    "main.da9b1d9d.js.map": "/Google-books/static/js/main.da9b1d9d.js.map"
+    "main.f2b65979.css.map": "/Google-books/static/css/main.f2b65979.css.map",
+    "main.7356e156.js.map": "/Google-books/static/js/main.7356e156.js.map"
   },
   "entrypoints": [
-    "static/css/main.2d84cf97.css",
-    "static/js/main.da9b1d9d.js"
+    "static/css/main.f2b65979.css",
+    "static/js/main.7356e156.js"
   ]
 }
