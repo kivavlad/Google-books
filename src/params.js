@@ -13,4 +13,4 @@ export const SORT_SELECT_OPTIONS = [
     {id: 12, name: 'Newest', value: 'Newest' },
 ];
 
-export const MAX_RESULTS = 32;
+export const MAX_RESULTS = 30;

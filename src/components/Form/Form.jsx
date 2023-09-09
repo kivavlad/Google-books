@@ -23,8 +23,6 @@ const Form = (props) => {
             console.log(response.data.items);
             setBooks(response.data.items);
             setTotalResults(response.data.totalItems);
-            localStorage.setItem("books", JSON.stringify(response.data.items));
-            localStorage.setItem("totalCount", response.data.totalItems);
             setLoading(false);
         })
         .catch((error) => {

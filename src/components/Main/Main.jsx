@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import style from "./main.module.scss";
 import Form from "../Form/Form";
 import ResultBooksCards from "../ResultBookCards/ResultBooksCards";
@@ -12,12 +12,6 @@ const Main = (props) => {
     const {books, setBooks} = props;
     const [totalResults, setTotalResults] = useState(null);
     const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        if(localStorage.getItem("totalCount") !== null) {
-            setTotalResults(localStorage.getItem("totalCount"));
-        }
-    }, [setTotalResults])
     
     function reset() {
         setTotalResults([]);
@@ -61,7 +55,7 @@ const Main = (props) => {
                 <div className="container">
                     <div className={style.result_section_container}>
 
-                        {books.length >= 1 ?
+                        {books.length > 0 ?
                             <>
                                 {!loading ?
                                     <div>
