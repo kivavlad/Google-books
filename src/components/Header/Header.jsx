@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./header.module.scss";
 import { Link } from "react-router-dom";
+import burgerIcon from "../../assets/images/burger.png";
 
 
 const Header = () => {
@@ -25,6 +26,10 @@ const Header = () => {
                     <div className={style.header_buttons}>
                         <Link to="/" className={style.header_link}>Login</Link>
                         <button className={style.button}>Sign Up</button>
+                    </div>
+
+                    <div className={style.burger}>
+                        <img src={burgerIcon} alt="" />
                     </div>
 
                 </div>
