@@ -13,12 +13,20 @@
         font-size: 32px;
         font-weight: 900;
         color: var(--gray-900);
+
+        @media (max-width: 900px) {
+            font-size: 28px;
+        }
     }
 }
 
 .header_nav {
     display: flex;
     align-items: center;
+
+    @media (max-width: 700px) {
+        display: none;
+    }
 }
 
 .header_links {
@@ -36,12 +44,20 @@
     &:hover {
         color: var(--gray-100);
     }
+
+    @media (max-width: 900px) {
+        font-size: 16px;
+    }
 }
 
 .header_buttons {
     display: flex;
     align-items: center;
     gap: 20px;
+
+    @media (max-width: 700px) {
+        display: none;
+    }
 }
 
 .button {
@@ -58,5 +74,24 @@
 
     &:hover {
         background-color: var(--primary-600);
+    }
+}
+
+.burger {
+    display: none;
+
+    @media (max-width: 700px) {
+        display: block;
+        cursor: pointer;
+
+        img {
+            width: 42px;
+            height: 42px;
+
+            @media (max-width: 500px) {
+                width: 32px;
+                height: 32px;
+            }
+        }
     }
 }
