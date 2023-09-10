@@ -9,10 +9,10 @@ const ResultBooksCards = (props) => {
         <>
             {books && 
                 <>
-                    {books.map((book) => {
+                    {books.map((book, index) => {
                         return (
                             <BookCard
-                                key={book.id}
+                                key={index}
                                 book={book}
                             />
                         )
