@@ -7,22 +7,23 @@ import { MAX_RESULTS, CATEGORY_SELECT_OPTIONS, SORT_SELECT_OPTIONS } from "../..
 
 
 const Form = (props) => {
-    const {setTotalResults, books, setBooks, setLoading} = props;
+    const {setTotalResults, setBooks, setLoading, setInfo} = props;
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     function onSubmit(data) {
         getBooks(data);
+        setInfo(data);
     }
 
     async function getBooks(data) {
-        const startIndex = books.length + MAX_RESULTS;
+
         setLoading(true);
         await
-        api.get(`/v1/volumes?q=${data.title}+subject:${data.category}&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&orderBy=${data.sorting}&key=${process.env.REACT_APP_API_KEY}`)
+        api.get(`/v1/volumes?q=${data.title}+subject:${data.category}&maxResults=${MAX_RESULTS}&startIndex=0&orderBy=${data.sorting}&key=${process.env.REACT_APP_API_KEY}`)
         .then((response) => {
-            console.log(response.data.items);
             setBooks(response.data.items);
             setTotalResults(response.data.totalItems);
+            localStorage.setItem("total", response.data.totalItems);
             setLoading(false);
         })
         .catch((error) => {
@@ -66,9 +67,9 @@ const Form = (props) => {
                         {...register('category')}
                         className={style.select}
                     >
-                        {CATEGORY_SELECT_OPTIONS.map((categoty) => {
+                        {CATEGORY_SELECT_OPTIONS.map((categoty, index) => {
                             return(
-                                <option key={categoty.id} value={categoty.value}>{categoty.name}</option>
+                                <option key={index} value={categoty.value}>{categoty.name}</option>
                             )
                         })}
                     </select>
@@ -80,9 +81,9 @@ const Form = (props) => {
                         {...register('sorting')}
                         className={style.select}
                     >
-                        {SORT_SELECT_OPTIONS.map((element) => {
+                        {SORT_SELECT_OPTIONS.map((element, index) => {
                             return(
-                                <option key={element.id} value={element.value}>{element.name}</option>
+                                <option key={index} value={element.value}>{element.name}</option>
                             )
                         })}
                     </select>

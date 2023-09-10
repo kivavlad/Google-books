@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import style from "./main.module.scss";
 import Form from "../Form/Form";
 import ResultBooksCards from "../ResultBookCards/ResultBooksCards";
 import { Loader } from "../Loader/Loader";
+import { MAX_RESULTS } from "../../params";
+import api from "../../axios/api";
 
 import heroImage from "../../assets/images/hero-image.jpg"; 
 import bgImage from "../../assets/images/bg-image.png";
@@ -12,12 +14,31 @@ const Main = (props) => {
     const {books, setBooks} = props;
     const [totalResults, setTotalResults] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [info, setInfo] = useState({});
     
     function reset() {
         setTotalResults([]);
         setBooks([]);
+        localStorage.clear();
     }
 
+    useEffect(() => {
+        if(localStorage.getItem("total") !== null) {
+            setTotalResults(localStorage.getItem("total"))
+        }
+    }, [setTotalResults])
+
+    async function getMoreBooks() {
+        const startIndex = books.length + MAX_RESULTS;
+        await
+        api.get(`/v1/volumes?q=${info.title}+subject:${info.category}&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&orderBy=${info.sorting}&key=${process.env.REACT_APP_API_KEY}`)
+        .then((response) => {
+            setBooks([...books, ...response.data.items]);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 
     return (
         <>
@@ -44,8 +65,8 @@ const Main = (props) => {
                     <Form 
                         setTotalResults={setTotalResults}
                         setBooks={setBooks}
-                        books={books}
                         setLoading={setLoading}
+                        setInfo={setInfo}
                     />
                 </div>
             </section>
@@ -72,9 +93,11 @@ const Main = (props) => {
                                             <ResultBooksCards books={books} />
                                         </div>
 
-                                        <div className={style.search_result_button_container}>
-                                            <button type='submit'>Load more</button>
-                                        </div>
+                                        {(localStorage.getItem("total") > MAX_RESULTS) && 
+                                            <div className={style.search_result_button_container}>
+                                                <button onClick={() => getMoreBooks()} type='submit'>Load more</button>
+                                            </div>
+                                        }
 
                                     </div>
                                 :
