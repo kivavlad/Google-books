@@ -1,8 +1,5 @@
 ## Проект Google книги
 
-Посмотреть проект можно [Здесь](kivavlad.github.io/Google-books/).
-
-
 ## Задание
 
 Необходимо разработать React-приложение поиска книг с помощью Google Books API. Документация: https://developers.google.com/books/docs/v1/using. Для авторизации запросов к API выбрать способ с предоставлением API key (https://developers.google.com/books/docs/v1/using#APIKey).
@@ -22,4 +19,4 @@ __Функционал__
 
 __Технологии, используемые в разработке__
 
--React.js; (axios, react-router-dom, react-hook-form)
+-React.js; (Redux, Axios, React-router-dom, React-hook-form)
