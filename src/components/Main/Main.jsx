@@ -16,7 +16,6 @@ const Main = (props) => {
     function reset() {
         setTotalResults([]);
         setBooks([]);
-        localStorage.clear();
     }
 
 
