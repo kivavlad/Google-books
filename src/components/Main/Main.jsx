@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import style from "./main.module.scss";
 import Form from "../Form/Form";
 import ResultBooksCards from "../ResultBookCards/ResultBooksCards";
@@ -12,26 +12,19 @@ import bgImage from "../../assets/images/bg-image.png";
 
 const Main = (props) => {
     const {books, setBooks} = props;
-    const [totalResults, setTotalResults] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [info, setInfo] = useState({});
+    const totalResults = localStorage.getItem("total") ? localStorage.getItem("total") : 0;
+    const formData = localStorage.getItem("formData") ? JSON.parse(localStorage.getItem("formData")) : {};
     
     function reset() {
-        setTotalResults([]);
         setBooks([]);
         localStorage.clear();
     }
 
-    useEffect(() => {
-        if(localStorage.getItem("total") !== null) {
-            setTotalResults(localStorage.getItem("total"))
-        }
-    }, [setTotalResults])
-
     async function getMoreBooks() {
         const startIndex = books.length + MAX_RESULTS;
         await
-        api.get(`/v1/volumes?q=${info.title}+subject:${info.category}&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&orderBy=${info.sorting}&key=${process.env.REACT_APP_API_KEY}`)
+        api.get(`/v1/volumes?q=${formData.title}+subject:${formData.category}&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&orderBy=${formData.sorting}&key=${process.env.REACT_APP_API_KEY}`)
         .then((response) => {
             setBooks([...books, ...response.data.items]);
         })
@@ -62,12 +55,7 @@ const Main = (props) => {
 
             <section className={style.form_section}>
                 <div className="container">
-                    <Form 
-                        setTotalResults={setTotalResults}
-                        setBooks={setBooks}
-                        setLoading={setLoading}
-                        setInfo={setInfo}
-                    />
+                    <Form setBooks={setBooks} setLoading={setLoading} />
                 </div>
             </section>
 
@@ -83,7 +71,7 @@ const Main = (props) => {
                                             <div>
                                                 <h2 className={style.result_section_title}>Search results</h2>
                                                 <h4 className={style.result_section_subtitle}>
-                                                    <span>{totalResults ? totalResults : 0}</span> books found for your request
+                                                    <span>{totalResults}</span> books found for your request
                                                 </h4>
                                             </div>
                                                 <button onClick={() => reset()} className={style.reset_button}>Reset</button>

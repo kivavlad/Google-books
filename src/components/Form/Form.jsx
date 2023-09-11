@@ -7,22 +7,20 @@ import { MAX_RESULTS, CATEGORY_SELECT_OPTIONS, SORT_SELECT_OPTIONS } from "../..
 
 
 const Form = (props) => {
-    const {setTotalResults, setBooks, setLoading, setInfo} = props;
+    const {setBooks, setLoading} = props;
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     function onSubmit(data) {
+        setLoading(true);
         getBooks(data);
-        setInfo(data);
+        localStorage.setItem('formData', JSON.stringify(data));
     }
 
     async function getBooks(data) {
-
-        setLoading(true);
         await
         api.get(`/v1/volumes?q=${data.title}+subject:${data.category}&maxResults=${MAX_RESULTS}&startIndex=0&orderBy=${data.sorting}&key=${process.env.REACT_APP_API_KEY}`)
         .then((response) => {
             setBooks(response.data.items);
-            setTotalResults(response.data.totalItems);
             localStorage.setItem("total", response.data.totalItems);
             setLoading(false);
         })
