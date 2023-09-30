@@ -39,9 +39,9 @@ const Form = (props) => {
 
 
     return (
-        <div className={style.form_container}>
+        <form onSubmit={handleSubmit(onSubmit)} className={style.form_container}>
 
-            <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+            <div className={style.form}>
                 <input 
                     {...register('title', {required: true})}
                     aria-invalid={errors.title ? "true" : "false"} 
@@ -52,7 +52,7 @@ const Form = (props) => {
                 />
 
                 <button className={style.button} type='submit'>Search</button>
-            </form>
+            </div>
 
             <div className={style.errors_container}>
                 {errors.title?.type === 'required' && <div style={errorFormStyle} role="alert">Enter book title</div>}
@@ -88,7 +88,7 @@ const Form = (props) => {
                 </div>
             </div>
 
-        </div>
+        </form>
     )
 }
 
