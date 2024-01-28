@@ -16,9 +16,9 @@ export const Form = () => {
     }
 
     return (
-        <div className={style.form_container}>
+        <form onSubmit={handleSubmit(onSubmit)} className={style.form_container}>
 
-            <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+            <div className={style.form}>
                 <input 
                     {...register('title', {required: true})}
                     aria-invalid={errors.title ? "true" : "false"} 
@@ -29,7 +29,7 @@ export const Form = () => {
                 />
 
                 <button className={style.button} type='submit'>Search</button>
-            </form>
+            </div>
 
             <div className={style.errors_container}>
                 {errors.title?.type === 'required' && <div className={style.error__text}>Enter book title</div>}
@@ -51,6 +51,6 @@ export const Form = () => {
                 </div>
             </div>
 
-        </div>
+        </form>
     )
 }

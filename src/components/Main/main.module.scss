@@ -29,7 +29,7 @@
         line-height: 72px;
         color: var(--gray-900);
 
-        @media (max-width: 1200px) {
+        @media (max-width: 1280px) {
             font-size: 52px;
             line-height: 62px;
         }
@@ -145,7 +145,7 @@
     position: absolute;
     margin-top: -100px;
     width: 100%;
-    z-index: 999;
+    z-index: 9;
 }
 
 /* Results */
@@ -256,6 +256,7 @@
 
     @media (max-width: 900px) {
         grid-template-columns: repeat(2, 1fr);
+        margin: 40px 10px;
     }
 
     @media (max-width: 550px) {
