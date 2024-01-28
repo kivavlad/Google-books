@@ -39,14 +39,14 @@ export const Form = () => {
                 <div className={style.categories}>
                     <h4>Categories:</h4>
                     <select {...register('category')} className={style.select}>
-                        {CATEGORY_SELECT_OPTIONS.map((categoty) => <option key={categoty.id} value={categoty.value}>{categoty.name}</option>)}
+                        {CATEGORY_SELECT_OPTIONS.map((categoty, index) => <option key={index} value={categoty.value}>{categoty.name}</option>)}
                     </select>
                 </div>
 
                 <div className={style.categories}>
                     <h4>Sorting by:</h4>
                     <select {...register('sorting')} className={style.select}>
-                        {SORT_SELECT_OPTIONS.map((element) => <option key={element.id} value={element.value}>{element.name}</option>)}
+                        {SORT_SELECT_OPTIONS.map((element, index) => <option key={index} value={element.value}>{element.name}</option>)}
                     </select>
                 </div>
             </div>

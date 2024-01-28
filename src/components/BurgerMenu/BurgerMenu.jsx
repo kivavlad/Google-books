@@ -1,9 +1,7 @@
-import React from "react";
-import style from "./burger.module.scss";
 import { Link } from "react-router-dom";
+import style from "./burger.module.scss";
 
-
-const BurgerMenu = () => {
+export const BurgerMenu = () => {
 
     return (
         <div className={style.burger_form}>
@@ -19,5 +17,3 @@ const BurgerMenu = () => {
         </div>
     )
 } 
-
-export default BurgerMenu
