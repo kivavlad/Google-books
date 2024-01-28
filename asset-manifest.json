@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Google-books/static/css/main.4fb0306e.css",
-    "main.js": "/Google-books/static/js/main.37350c3d.js",
+    "main.css": "/Google-books/static/css/main.dbd0b105.css",
+    "main.js": "/Google-books/static/js/main.ddacab66.js",
     "static/media/book.jpg": "/Google-books/static/media/book.89402c324a9f5e90693a.jpg",
     "static/media/bg-image.png": "/Google-books/static/media/bg-image.d5a121d097cf4c5a46c4.png",
     "static/media/hero-image.jpg": "/Google-books/static/media/hero-image.82ddce1f4686bdbddaaf.jpg",
@@ -11,11 +11,11 @@
     "index.html": "/Google-books/index.html",
     "static/media/icon-twitter.svg": "/Google-books/static/media/icon-twitter.1d5c6d5e6ab1717a500af2df0a87959a.svg",
     "static/media/icon-facebook.svg": "/Google-books/static/media/icon-facebook.229c75a01827343aef31ae916e2ec18a.svg",
-    "main.4fb0306e.css.map": "/Google-books/static/css/main.4fb0306e.css.map",
-    "main.37350c3d.js.map": "/Google-books/static/js/main.37350c3d.js.map"
+    "main.dbd0b105.css.map": "/Google-books/static/css/main.dbd0b105.css.map",
+    "main.ddacab66.js.map": "/Google-books/static/js/main.ddacab66.js.map"
   },
   "entrypoints": [
-    "static/css/main.4fb0306e.css",
-    "static/js/main.37350c3d.js"
+    "static/css/main.dbd0b105.css",
+    "static/js/main.ddacab66.js"
   ]
 }
