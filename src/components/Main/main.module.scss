@@ -1,3 +1,4 @@
+/* Hero */
 .hero_section_content {
     display: flex;
     align-items: center;
@@ -139,6 +140,7 @@
     }
 }
 
+/* Form */
 .form_section {
     position: absolute;
     margin-top: -100px;
@@ -146,6 +148,7 @@
     z-index: 999;
 }
 
+/* Results */
 .result_section {
     background-color: var(--bg-light);
 }
@@ -213,9 +216,9 @@
 
 .reset_button {
     width: 170px;
+    height: 50px;
     font-size: 18px;
     font-weight: 700;
-    padding: 18px 0;
     text-align: center;
     border: none;
     border-radius: 10px;
@@ -268,9 +271,9 @@
 
     button {
         width: 200px;
+        height: 50px;
         font-size: 18px;
         font-weight: 700;
-        padding: 18px 0;
         text-align: center;
         border: none;
         border-radius: 10px;

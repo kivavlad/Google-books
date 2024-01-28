@@ -1,3 +1,5 @@
+export const API_BASE_URL = 'https://www.googleapis.com/books';
+
 export const CATEGORY_SELECT_OPTIONS = [
     {id: 1, name: 'All', value: '' },
     {id: 2, name: 'Art', value: 'Art' },
@@ -13,4 +15,4 @@ export const SORT_SELECT_OPTIONS = [
     {id: 12, name: 'Newest', value: 'Newest' },
 ];
 
-export const MAX_RESULTS = 30;
+export const MAX_RESULTS = 32; 

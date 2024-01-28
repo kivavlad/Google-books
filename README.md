@@ -19,4 +19,4 @@ __Функционал__
 
 __Технологии, используемые в разработке__
 
--React.js; (Redux, Axios, React-router-dom, React-hook-form)
+-React.js, Redux-toolkit

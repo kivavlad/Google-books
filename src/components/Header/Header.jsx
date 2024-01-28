@@ -1,11 +1,8 @@
-import React from "react";
-import style from "./header.module.scss";
 import { Link } from "react-router-dom";
+import style from "./header.module.scss";
 import burgerIcon from "../../assets/images/burger.png";
 
-
-const Header = () => {
-
+export const Header = () => {
     return (
         <header className={style.header}>
             <div className="container">
@@ -37,5 +34,3 @@ const Header = () => {
         </header>
     )
 }
-
-export default Header

@@ -1,24 +1,18 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import style from "./card.module.scss";
 import bookImage from "../../assets/images/book.jpg";
-import { useNavigate } from "react-router-dom";
 
-
-const BookCard = (props) => {
-    const {book} = props;
+export const BookCard = (props) => {
+    const { book } = props;
     const navigate = useNavigate();
 
     const authors = book.volumeInfo.authors?.join(', ');
     const imageUrl = book.volumeInfo.imageLinks?.thumbnail;
-    const bookTitle = book.volumeInfo.title?.substr(0, 36);
+    const bookTitle = book.volumeInfo.title;
     const categories = book.volumeInfo?.categories;
 
-    function getOpenBook(book) {
-        navigate(`/${book.id}`);
-    }
-
     return (
-        <div key={book.id} onClick={() => getOpenBook(book)}  className={style.card_container}>
+        <div key={book.id} onClick={() => navigate(`/${book.id}`)}  className={style.card_container}>
 
             <div className={style.image_container}>
                 <img src={imageUrl ? imageUrl : bookImage} alt="" />
@@ -33,5 +27,3 @@ const BookCard = (props) => {
         </div>
     )
 }
-
-export default BookCard

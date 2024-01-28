@@ -1,15 +1,11 @@
-import React from "react";
-import style from "./footer.module.scss";
 import { Link } from "react-router-dom";
-
+import style from "./footer.module.scss";
 import facebookIcon from "../../assets/images/icon-facebook.svg";
 import instIcon from "../../assets/images/icon-instagram.svg";
 import pinterestIcon from "../../assets/images/icon-pinterest.svg";
 import twitterIcon from "../../assets/images/icon-twitter.svg";
 
-
-
-const Footer = () => {
+export const Footer = () => {
 
     return (
         <footer className={style.footer}>
@@ -39,5 +35,3 @@ const Footer = () => {
         </footer>
     )
 }
-
-export default Footer

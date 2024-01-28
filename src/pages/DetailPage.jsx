@@ -1,10 +1,9 @@
-import React from "react";
-import OpenBook from "../components/OpenBook/OpenBook";
+import { OpenBook } from "../components/OpenBook/OpenBook";
 
-export const DetailPage = (props) => {
+export const DetailPage = () => {
     return(
         <div className="container">
-            <OpenBook {...props} />
+            <OpenBook />
         </div>
     )
 }

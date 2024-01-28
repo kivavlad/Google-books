@@ -1,16 +1,16 @@
-import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import style from "./book.module.scss";
 import bookImage from "../../assets/images/book.jpg";
 import closeIcon from "../../assets/images/close_icon.svg";
-import { useNavigate, useParams } from "react-router-dom";
 
 
-const OpenBook = (props) => {
-    const {books} = props;
+export const OpenBook = () => {
+    const books = useSelector((state) => state.books.items);
     const navigate = useNavigate();
-    let {id} = useParams();
-    const currentBook = books.find((e) => e.id === id);
+    let { id } = useParams();
 
+    const currentBook = books.find((book) => book.id === id);
     const authors = currentBook.volumeInfo.authors?.join(', ');
     const imageUrl = currentBook.volumeInfo.imageLinks?.thumbnail;
     const bookTitle = currentBook.volumeInfo?.title;
@@ -40,5 +40,3 @@ const OpenBook = (props) => {
         </div>
     )
 }
-
-export default OpenBook

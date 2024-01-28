@@ -1,23 +1,26 @@
-import React, {useState} from "react";
-import style from "./main.module.scss";
-import Form from "../Form/Form";
-import ResultBooksCards from "../ResultBookCards/ResultBooksCards";
-import { Loader } from "../Loader/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { MAX_RESULTS } from "../../config";
+import { getBooks, resetBooks } from "../../store/slice/bookSlice";
+import { Form } from "../Form/Form";
+import { ResultBooksCards } from "../ResultBookCards/ResultBooksCards";
+import { ButtonLoader } from "../Loader/ButtonLoader";
 
+import style from "./main.module.scss";
 import heroImage from "../../assets/images/hero-image.jpg"; 
 import bgImage from "../../assets/images/bg-image.png";
 
 
-const Main = (props) => {
-    const {books, setBooks} = props;
-    const [totalResults, setTotalResults] = useState(null);
-    const [loading, setLoading] = useState(false);
-    
-    function reset() {
-        setTotalResults([]);
-        setBooks([]);
-    }
+export const Main = () => {
+    const books = useSelector((state) => state.books.items);
+    const totalResults = useSelector((state) => state.books.totalItems);
+    const loading = useSelector((state) => state.books.loading);
+    const data = JSON.parse(localStorage.getItem('data')) || null;
+    const dispatch = useDispatch();
 
+    function getMoreBooks() {
+        const startIndex = books.length + MAX_RESULTS;
+        dispatch(getBooks({...data, startIndex}));
+    }
 
     return (
         <>
@@ -41,12 +44,7 @@ const Main = (props) => {
 
             <section className={style.form_section}>
                 <div className="container">
-                    <Form 
-                        setTotalResults={setTotalResults}
-                        setBooks={setBooks}
-                        books={books}
-                        setLoading={setLoading}
-                    />
+                    <Form />
                 </div>
             </section>
 
@@ -54,32 +52,30 @@ const Main = (props) => {
                 <div className="container">
                     <div className={style.result_section_container}>
 
-                        {books.length > 0 ?
+                        {books?.length ?
                             <>
-                                {!loading ?
+                                <div className={style.search_result_params}>
                                     <div>
-                                        <div className={style.search_result_params}>
-                                            <div>
-                                                <h2 className={style.result_section_title}>Search results</h2>
-                                                <h4 className={style.result_section_subtitle}>
-                                                    <span>{totalResults ? totalResults : 0}</span> books found for your request
-                                                </h4>
-                                            </div>
-                                                <button onClick={() => reset()} className={style.reset_button}>Reset</button>
-                                        </div>
-
-                                        <div className={style.search_result_books}>
-                                            <ResultBooksCards books={books} />
-                                        </div>
-
-                                        <div className={style.search_result_button_container}>
-                                            <button type='submit'>Load more</button>
-                                        </div>
-
+                                        <h2 className={style.result_section_title}>Search results</h2>
+                                        <h4 className={style.result_section_subtitle}>
+                                            <span>{totalResults}</span> books found for your request
+                                        </h4>
                                     </div>
-                                :
-                                    <div className={style.loader}>
-                                        <Loader />
+                                        <button type='button' onClick={() => dispatch(resetBooks())} className={style.reset_button}>Reset</button>
+                                </div>
+
+                                <div className={style.search_result_books}>
+                                    <ResultBooksCards />
+                                </div>
+
+                                {books.length > 30 && books.length < totalResults &&
+                                    <div className={style.search_result_button_container}>
+                                        <button 
+                                            type='button' 
+                                            onClick={getMoreBooks}
+                                        >
+                                            {loading ? <ButtonLoader /> : 'Load more'}
+                                        </button>
                                     </div>
                                 }
                             </>
@@ -96,5 +92,3 @@ const Main = (props) => {
         </>
     )
 }
-
-export default Main
