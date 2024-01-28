@@ -1,26 +1,17 @@
-import React from "react";
-import BookCard from "../BookCard/BookCard";
+import { useSelector } from "react-redux";
+import { BookCard } from "../BookCard/BookCard";
 
 
-const ResultBooksCards = (props) => {
-    const {books} = props;
+export const ResultBooksCards = () => {
+    const books = useSelector((state) => state.books.items);
 
     return (
         <>
-            {books && 
+            {books?.length && 
                 <>
-                    {books.map((book, index) => {
-                        return (
-                            <BookCard
-                                key={index}
-                                book={book}
-                            />
-                        )
-                    })}
+                    {books.map((book, index) => <BookCard key={index} book={book} />)}
                 </>
             }
         </>
     )
 }
-
-export default ResultBooksCards

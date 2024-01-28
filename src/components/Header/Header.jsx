@@ -1,23 +1,10 @@
-import React, { useState, useEffect } from "react";
-import style from "./header.module.scss";
 import { Link } from "react-router-dom";
+import style from "./header.module.scss";
 import burgerIcon from "../../assets/images/burger.png";
 import closeIcon from "../../assets/images/close_icon.svg";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
-
-const Header = () => {
-    let [burgerActive, setBurgerActive] = useState(false);
-
-    useEffect(() => {
-        if (burgerActive) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "unset";
-        }
-    }, [burgerActive]);
-    
-
+export const Header = () => {
     return (
         <header className={style.header}>
             <div className="container">
@@ -52,5 +39,3 @@ const Header = () => {
         </header>
     )
 }
-
-export default Header

@@ -65,6 +65,13 @@
     height: 20px;
 }
 
+.error__text {
+    font-size: 14px;
+    color: var(--secondary-300);
+    text-align: center;
+    margin-top: 6px;
+}
+
 .errors_container_mobile {
     display: none;
 }

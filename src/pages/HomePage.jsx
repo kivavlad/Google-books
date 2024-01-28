@@ -1,12 +1,11 @@
-import Main from "../components/Main/Main";
-import Footer from "../components/Footer/Footer";
+import { Main } from "../components/Main/Main";
+import { Footer } from "../components/Footer/Footer";
 
-
-export const HomePage = (props) => {
+export const HomePage = () => {
 
      return (
         <>
-            <Main {...props} />
+            <Main />
             <Footer />
         </>
      )
